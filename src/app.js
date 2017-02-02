@@ -1,9 +1,6 @@
-import React from 'react';
-import {render} from 'react-dom';
+import React from 'react'
+import {render} from 'react-dom'
+import Article from './Article'
+import {articles} from './fixtures'
 
-render(
-	<div>
-		<h1>Hello world</h1>
-	</div>,
-	document.getElementById('container')
-);
+render(<Article article={articles[0]} />, document.getElementById('container'))
