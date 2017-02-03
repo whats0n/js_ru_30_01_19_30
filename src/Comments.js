@@ -11,10 +11,10 @@ export default class Comments extends Component {
 	buildComment() {
 		this.comments = this.props.comments.map(item => {
 			return (
-				<div className="comment" key={item.id}>
-					<h5>{item.user}</h5>
+				<li className="comment" key={item.id}>
+					<h4>{item.user}</h4>
 					<p>{item.text}</p>
-				</div>
+				</li>
 			)
 		})
 	}
@@ -30,7 +30,7 @@ export default class Comments extends Component {
 
 	getComments() {
 		if (!this.state.isOpen) return null;
-		return this.comments;
+		return <ul className="commetns__list">{this.comments}</ul>;
 	}
 
 	getButton() {

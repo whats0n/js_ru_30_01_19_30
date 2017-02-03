@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"exte",
+				"extends"
+			],
+			[
 				"_ball",
 				"_ballHeight"
 			],
@@ -510,10 +514,6 @@
 			[
 				"attr",
 				"attr	.attr() - single"
-			],
-			[
-				"tool",
-				"tooltipBox"
 			]
 		]
 	},
@@ -524,6 +524,46 @@
 			"settings":
 			{
 				"buffer_size": 218,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/fixtures.js",
+			"settings":
+			{
+				"buffer_size": 24076,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/Article.js",
+			"settings":
+			{
+				"buffer_size": 984,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "README.md",
+			"settings":
+			{
+				"buffer_size": 219,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/Comments.js",
+			"settings":
+			{
+				"buffer_size": 882,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": ".gitignore",
+			"settings":
+			{
+				"buffer_size": 74,
 				"line_ending": "Windows"
 			}
 		}
@@ -1013,7 +1053,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -1041,7 +1081,151 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/fixtures.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 24076,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1176.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/Article.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 984,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								364,
+								364
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "README.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 219,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								219,
+								219
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/Comments.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 882,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								736,
+								736
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": ".gitignore",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 74,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								74,
+								74
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -1109,16 +1293,16 @@
 	"select_project":
 	{
 		"height": 500.0,
-		"last_filter": "feat",
+		"last_filter": "capr",
 		"selected_items":
 		[
 			[
-				"feat",
-				"C:\\homework\\feature-studio\\feature-studio.sublime-project"
-			],
-			[
 				"capr",
 				"C:\\github\\Capri-Repository\\Capri.sublime-project"
+			],
+			[
+				"feat",
+				"C:\\homework\\feature-studio\\feature-studio.sublime-project"
 			],
 			[
 				"euro",

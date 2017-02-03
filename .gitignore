@@ -1,4 +1,6 @@
 build
 node_modules
 .idea
+*.sublime-workspace
+*.sublime-project
 npm-debug.log

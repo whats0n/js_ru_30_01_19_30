@@ -18,7 +18,7 @@ export default class Article extends Component {
     render() {
         const {article} = this.props
         return (
-            <div>
+            <div className="article">
                 <h3 onClick={this.handleClick}>{article.title}</h3>
                 {this.getBody()}
             </div>
@@ -30,8 +30,8 @@ export default class Article extends Component {
 
         return (
             <section>
-                <div className="article__text">
-                    {this.props.article.text}
+                <div className="article__content">
+                    <p>{this.props.article.text}</p>
                 </div>
                 <Comments comments={this.props.article.comments} />
             </section>
