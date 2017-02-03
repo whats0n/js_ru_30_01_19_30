@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 
+import Comments from './Comments'
+
 export default class Article extends Component {
     state = {
         isOpen: false
@@ -15,7 +17,6 @@ export default class Article extends Component {
 
     render() {
         const {article} = this.props
-        console.log('---', 123)
         return (
             <div>
                 <h3 onClick={this.handleClick}>{article.title}</h3>
@@ -29,7 +30,10 @@ export default class Article extends Component {
 
         return (
             <section>
-                {this.props.article.text}
+                <div className="article__text">
+                    {this.props.article.text}
+                </div>
+                <Comments comments={this.props.article.comments} />
             </section>
         )
     }
