@@ -5,11 +5,10 @@ export default class Comments extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {isOpen: false}
-		this.buildComment()
 	}
 
 	buildComment() {
-		this.comments = this.props.comments.map(item => {
+		return this.props.comments.map(item => {
 			return (
 				<li className="comment" key={item.id}>
 					<h4>{item.user}</h4>
@@ -20,6 +19,7 @@ export default class Comments extends Component {
 	}
 
 	render() {
+		if (!this.props.comments) return null
 		return (
 			<div className="comments">
 				{this.getButton()}
@@ -29,13 +29,13 @@ export default class Comments extends Component {
 	}
 
 	getComments() {
-		if (!this.state.isOpen) return null;
-		return <ul className="commetns__list">{this.comments}</ul>;
+		if (!this.state.isOpen) return null
+		return <ul className="commetns__list">{this.buildComment()}</ul>
 	}
 
 	getButton() {
 		let label = this.state.isOpen ? 'Hide' : 'Show'
-		return <button onClick={this.toggleComments}>{label} comments ({this.props.comments.length})</button>
+		return <button onClick={this.toggleComments}>{label} comments{this.props.comments.length}</button>
 	}
 
 	toggleComments = e => {
