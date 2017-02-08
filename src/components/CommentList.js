@@ -1,9 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import Comment from './Comment'
 
 class CommentList extends Component {
     static defaultProps = {
         comments: []
+    }
+    static propTypes = {
+        comments: PropTypes.arrayOf(PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            text: PropTypes.string.isRequired
+        })).isRequired
     }
     componentDidMount() {
         console.log('---', 'mounted')
