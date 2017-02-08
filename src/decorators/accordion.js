@@ -7,9 +7,8 @@ export default (Component) => class Accordion extends React.Component {
 
     toggleOpen = id => ev => {
         ev && ev.preventDefault && ev.preventDefault()
-        if (id == this.state.openItemID) id = null;
         this.setState({
-            openItemID: id
+            openItemID: id == this.state.openItemID ? null : id
         })
     }
 

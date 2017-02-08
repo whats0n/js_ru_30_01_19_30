@@ -10,10 +10,15 @@ class ArticleList extends Component {
 
     static propTypes = {
         articles: PropTypes.arrayOf(PropTypes.shape({
-            id: PropTypes.string.isRequired,
-            title: PropTypes.string.isRequired,
-            text: PropTypes.string.isRequired
-        })).isRequired
+            id: PropTypes.string,
+            title: PropTypes.string,
+            text: PropTypes.string
+        })).isRequired,
+        toggleOpen: PropTypes.func.isRequired,
+        openItemID: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number
+        ])
     }
 
     render() {

@@ -7,7 +7,10 @@ class CommentList extends Component {
     }
     static propTypes = {
         comments: PropTypes.arrayOf(PropTypes.shape({
-            id: PropTypes.number.isRequired,
+            id: PropTypes.oneOfType([
+                PropTypes.string,
+                PropTypes.number
+            ]),
             text: PropTypes.string.isRequired
         })).isRequired
     }
