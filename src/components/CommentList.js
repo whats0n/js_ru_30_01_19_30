@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react'
 import Comment from './Comment'
-import CommentForm from './CommentForm'
 
 class CommentList extends Component {
     static propTypes = {
@@ -46,7 +45,6 @@ class CommentList extends Component {
         return (
             <section>
                 <ul>{commentItems}</ul>
-                <CommentForm />
             </section>
         )
     }

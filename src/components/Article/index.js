@@ -3,6 +3,7 @@ import {findDOMNode} from 'react-dom'
 import CommentList from '../CommentList'
 import CSSTransition from 'react-addons-css-transition-group'
 import './style.css'
+import CommentForm from '../CommentForm'
 
 class Article extends Component {
     static propTypes = {
@@ -55,6 +56,7 @@ class Article extends Component {
             <section>
                 {text}
                 <CommentList comments={comments} ref = {this.getCommentsRef} />
+                <CommentForm />
             </section>
         )
     }
