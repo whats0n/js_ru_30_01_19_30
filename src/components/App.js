@@ -3,6 +3,8 @@ import ArticleList from './ArticleList'
 import Chart from './Chart'
 import Select from 'react-select'
 import 'react-select/dist/react-select.css'
+
+import moment from 'moment';
 import DayPicker, { DateUtils } from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
 
@@ -10,8 +12,9 @@ class App extends Component {
     state = {
         user: '',
         selection: null,
-        selectedDay: null
-    }
+        from: null,
+        to: null
+    } 
 
     render() {
         const {articles} = this.props
@@ -19,23 +22,44 @@ class App extends Component {
             label: article.title,
             value: article.id
         }))
-        const { selectedDay } = this.state;
+        const { from, to } = this.state;
         return (
             <div>
                 User: <input type="text" value={this.state.user} onChange={this.handleUserChange}/>
                 <Select options = {options} onChange={this.handleSelectChange} value={this.state.selection} multi/>
-                <DayPicker
-                    selectedDays={ day => DateUtils.isSameDay(selectedDay, day) }
-                    onDayClick={ this.handleDayClick } 
-                />
-                <p>{ selectedDay ? selectedDay.toLocaleDateString() : 'Please select a day 👻' }</p>
+                <div className="RangeExample">
+                    { !from && !to && <p>Please select the <strong>first day</strong>.</p> }
+                    { from && !to && <p>Please select the <strong>last day</strong>.</p> }
+                    { from && to &&
+                      <p>
+                        You chose from { moment(from).format('L') } to { moment(to).format('L') }.
+                        { ' ' }<a href="." onClick={ this.handleResetClick }>Reset</a>
+                      </p>
+                    }
+                    <DayPicker
+                      numberOfMonths={ 2 }
+                      selectedDays={ day => DateUtils.isDayInRange(day, { from, to }) }
+                      onDayClick={ this.handleDayClick }
+                    />
+                </div>
                 <ArticleList articles={articles}/>
                 <Chart articles={articles}/>
             </div>
         )
     }
 
-    handleDayClick = (e, day, { selected }) => this.setState({ selectedDay: selected ? null : day })
+    handleDayClick = (e, day) => {
+        const range = DateUtils.addDayToRange(day, this.state);
+        this.setState(range);
+    }
+
+    handleResetClick = (e) => {
+        e.preventDefault();
+        this.setState({
+            from: null,
+            to: null
+        });
+    }
 
     handleSelectChange = selection => this.setState({ selection })
 
