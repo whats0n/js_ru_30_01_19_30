@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+//как упражнение - отлично. В реальной жизни так не делай: Декораторы нужны для реюза кода, нет смысла заводить его под одну задачу
 export default (Form) => class LeaveComment extends Component {
 
 	state = {
