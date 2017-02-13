@@ -12,6 +12,7 @@ class App extends Component {
     state = {
         user: '',
         selection: null,
+        //компонент становится слишком большим, пора разбивать на более мелкие
         from: null,
         to: null
     } 
