@@ -1,20 +1,18 @@
 import React, { PropTypes, Component } from 'react'
 import ArticleList from './ArticleList'
 import Chart from './Chart'
-import Select from 'react-select'
 import DateRange from './DateRange'
-import 'react-select/dist/react-select.css'
+import AwesomeSelect from './Select'
 import Counter from './Counter'
 import {connect} from 'react-redux'
 
 class App extends Component {
     state = {
-        user: '',
-        selection: null
+        user: ''
     }
 
     render() {
-        const {articles} = this.props
+        const {articles, filteredID, filteredDate} = this.props
         const options = articles.map(article => ({
             label: article.title,
             value: article.id
@@ -23,15 +21,16 @@ class App extends Component {
             <div>
                 <Counter/>
                 User: <input type="text" value={this.state.user} onChange={this.handleUserChange}/>
-                <Select options = {options} onChange={this.handleSelectChange} value={this.state.selection} multi/>
-                <DateRange />
-                <ArticleList articles={articles}/>
+                <AwesomeSelect options={options} filteredID={filteredID} />
+                <DateRange filteredDate={filteredDate}/>
+                <ArticleList 
+                    articles={articles}
+                    filteredID={filteredID}
+                    filteredDate={filteredDate}/>
                 <Chart articles={articles}/>
             </div>
         )
     }
-
-    handleSelectChange = selection => this.setState({ selection })
 
     handleUserChange = (ev) => {
         if (ev.target.value.length < 10) {
@@ -47,5 +46,7 @@ App.propTypes = {
 }
 
 export default connect(state => ({
-    articles: state.articles
+    articles: state.articles,
+    filteredID: state.filteredID,
+    filteredDate: state.filteredDate
 }))(App)
