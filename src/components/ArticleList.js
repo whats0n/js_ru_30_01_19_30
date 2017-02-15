@@ -25,7 +25,7 @@ class ArticleList extends Component {
             </ul>
         )
     }
-
+    //ок, но еще лучше делать фильтрацию в коннекте
     filterByID(id) {
         let {filteredID} = this.props;
         //stop filter if select is empty
