@@ -31,6 +31,7 @@ class Article extends Component {
                     {article.title}
                     <a href="#" onClick = {this.handleDelete}>Delete me</a>
                 </h3>
+                <h5>{new Date(article.date).toString()}</h5>
                 <CSSTransition
                     transitionName="article-body"
                     transitionEnterTimeout={500}

@@ -8,20 +8,17 @@ import {filteredArticlesDate} from '../AC';
 
 class DateRange extends Component {
 
-    state = {
-        from: null,
-        to: null
-    }
-
     handleDayClick = (e, day) => {
-        const range = DateUtils.addDayToRange(day, this.state);
-        this.setState(range);
-        // console.log(Date.parse(day));
-        this.props.filteredArticlesDate(Date.parse(range.from), Date.parse(range.to));
+        const range = DateUtils.addDayToRange(day, {
+            from: this.props.filteredDate.dateFrom,
+            to: this.props.filteredDate.dateTo
+        });
+        this.props.filteredArticlesDate(range.from, range.to);
     }
 
     render() {
-        const { from, to } = this.state;
+        const from = this.props.filteredDate.dateFrom;
+        const to = this.props.filteredDate.dateTo;
         const selectedRange = from && to && `${from.toDateString()} - ${to.toDateString()}`
         return (
             <div className="date-range">

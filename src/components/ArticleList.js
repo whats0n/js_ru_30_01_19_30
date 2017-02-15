@@ -6,7 +6,7 @@ class ArticleList extends Component {
     render() {
         const {articles, toggleOpenItem, isOpenItem, filteredID} = this.props
         const articleElements = articles.map((article) => {
-            
+
             if (!this.filterByID(article.id)) return null;
             if (!this.filterByDate(article.date)) return null;
 
@@ -38,32 +38,32 @@ class ArticleList extends Component {
                 break;
             }
         }
-        
+
         return false;
     }
 
     filterByDate(date) {
         let {dateFrom, dateTo} = this.props.filteredDate;
         let articleDate = Date.parse(date);
-        let flag = true;
-        console.log(!!dateFrom, dateTo, articleDate);
-        if (!!dateFrom) {
-            if (dateFrom <= articleDate) {
-                flag = true;
-            } else {
-                flag = false;
-            }
-        }
-        
-        if (!!dateTo) {
-            if (dateTo >= articleDate) {
-                flag = false;
-            } else {
-                flag = true;
-            }
-        }
+        let parsedFrom = Date.parse(dateFrom);
+        let parsedTo = Date.parse(dateTo);
 
-        return flag;
+        //if date from is empty - return flag true
+        if (isNaN(parsedFrom)) return true;
+        //if date to is empty and date from bigger than article date - return flag true
+        if (parsedFrom <= articleDate && isNaN(parsedTo)) return true;
+
+        console.log('____DATES', dateFrom, dateTo, new Date(date).toString());
+
+        //if dates is not empty
+        if (!isNaN(parsedFrom) || !isNaN(parsedTo)) {
+            //and if article date bigger than date from but smaller than date to - return flag true
+            if (parsedFrom <= articleDate && parsedTo >= articleDate) {
+                return true;
+            } else {
+                return false;
+            }
+        }
 
     }
 }
