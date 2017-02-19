@@ -9,6 +9,7 @@ const defaultState = {
 
 export default (state = defaultState, action) => {
     const {type, payload, articleID} = action
+    //в {...state} нет никакого смысла
     const currentArticle = {...state}.entities[articleID];
     switch (type) {
         case DELETE_ARTICLE:
@@ -29,6 +30,7 @@ export default (state = defaultState, action) => {
             }
         case ADD_COMMENT:
             let {id} = action;
+            //вот здесь ты, на самом деле, мутируешь стейт. Все просто меняется по ссылке 
             currentArticle.comments.push(id);
             return {
                 ...state,
