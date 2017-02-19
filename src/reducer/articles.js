@@ -10,7 +10,9 @@ const defaultState = {
 export default (state = defaultState, action) => {
     const {type, payload, articleID} = action
     //в {...state} нет никакого смысла
-    const currentArticle = {...state}.entities[articleID];
+    // const newState = {...state}; //было так - осознал ошибку
+    const newState = JSON.parse(JSON.stringify(state)); //сделал клонирование, так норм будет?
+    const currentArticle = newState.entities[articleID];
     switch (type) {
         case DELETE_ARTICLE:
             //todo fix me
@@ -30,19 +32,13 @@ export default (state = defaultState, action) => {
             }
         case ADD_COMMENT:
             let {id} = action;
-            //вот здесь ты, на самом деле, мутируешь стейт. Все просто меняется по ссылке 
+            //вот здесь ты, на самом деле, мутируешь стейт. Все просто меняется по ссылке
             currentArticle.comments.push(id);
-            return {
-                ...state,
-                ...currentArticle
-            }
+            return newState
         case LOAD_ARTICLE_TEXT + SUCCESS:
-            let {response} = action; 
+            let {response} = action;
             currentArticle.text = response.text;
-            return {
-                ...state,
-                ...currentArticle 
-            }
+            return newState
     }
 
     return state
