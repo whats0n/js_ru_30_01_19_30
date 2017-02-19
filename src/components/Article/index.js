@@ -4,7 +4,7 @@ import CommentList from '../CommentList'
 import CSSTransition from 'react-addons-css-transition-group'
 import './style.css'
 import {connect} from 'react-redux'
-import {deleteArticle} from '../../AC'
+import {deleteArticle, getArticle} from '../../AC'
 
 class Article extends Component {
     static propTypes = {
@@ -22,13 +22,19 @@ class Article extends Component {
         return nextProps.isOpen !== this.props.isOpen
     }
 */
+    
+    showArticle = e => {
+        this.props.toggleOpen(e)
+        if (this.props.article.text) return;
+        this.props.getArticle(this.props.article.id);
+    }
 
     render() {
         const {article, toggleOpen} = this.props
         return (
             <div ref = {this.getContainerRef}>
-                <h3 onClick={toggleOpen}>
-                    {article.title}
+                <h3>
+                    <span onClick={this.showArticle}>{article.title}</span>
                     <a href="#" onClick = {this.handleDelete}>Delete me</a>
                 </h3>
                 <CSSTransition
@@ -70,4 +76,4 @@ class Article extends Component {
     }
 }
 
-export default connect(null, { deleteArticle })(Article)
+export default connect(null, { deleteArticle, getArticle })(Article)

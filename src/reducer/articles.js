@@ -1,4 +1,4 @@
-import {DELETE_ARTICLE, LOAD_ALL_ARTICLES, FAIL, SUCCESS, START, ADD_COMMENT} from '../constants'
+import {DELETE_ARTICLE, LOAD_ALL_ARTICLES, FAIL, SUCCESS, START, ADD_COMMENT, LOAD_ARTICLE_TEXT} from '../constants'
 import {arrayToMap, mapToArr} from '../utils'
 
 const defaultState = {
@@ -8,8 +8,8 @@ const defaultState = {
 
 
 export default (state = defaultState, action) => {
-    const {type, payload} = action
-
+    const {type, payload, articleID} = action
+    const currentArticle = {...state}.entities[articleID];
     switch (type) {
         case DELETE_ARTICLE:
             //todo fix me
@@ -28,10 +28,19 @@ export default (state = defaultState, action) => {
                 isLoading: false
             }
         case ADD_COMMENT:
-            let {article, id} = action; 
-            let currentArticle = state.entities[article]; //get current article by id
-            currentArticle.comments.push(id) //add new comment id into comments array
-            return {...state}
+            let {id} = action;
+            currentArticle.comments.push(id);
+            return {
+                ...state,
+                ...currentArticle
+            }
+        case LOAD_ARTICLE_TEXT + SUCCESS:
+            let {response} = action; 
+            currentArticle.text = response.text;
+            return {
+                ...state,
+                ...currentArticle 
+            }
     }
 
     return state

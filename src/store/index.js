@@ -3,6 +3,7 @@ import reducer from '../reducer'
 import logger from '../middlewares/logger'
 import api from '../middlewares/api'
 import createId from '../middlewares/createId'
+import getArticles from '../middlewares/getArticles'
 import thunk from 'redux-thunk'
 
 const composeEnhancers =
@@ -13,7 +14,7 @@ const composeEnhancers =
         }) : compose;
 
 const enhancer = composeEnhancers(
-    applyMiddleware(thunk, api, logger, createId)
+    applyMiddleware(thunk, api, logger, createId, getArticles)
 )
 
 const store = createStore(reducer, {}, enhancer)

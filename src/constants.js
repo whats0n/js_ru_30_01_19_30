@@ -12,3 +12,5 @@ export const SUCCESS = '_SUCCESS'
 export const FAIL = '_FAIL'
 
 export const ADD_COMMENT = 'ADD_COMMENT'
+
+export const LOAD_ARTICLE_TEXT = 'LOAD_ARTICLE_TEXT'
