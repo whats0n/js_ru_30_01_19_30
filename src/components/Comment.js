@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import {connect} from 'react-redux'
 
 function Comment(props) {
+    if (!props.comment) return null
     const {text, user} = props.comment
     return (
         <div>
@@ -21,6 +22,6 @@ Comment.propTypes = {
 
 export default connect((state, props) => {
     const {id} = props
-    const comment = state.comments.get(id)
+    const comment = state.comments.get(id);
     return { comment }
 })(Comment)

@@ -6,7 +6,7 @@ const filtersGetter = state => state.filters
 const idGetter = (state, props) => props.id
 
 export const filteredArticlesSelector = createSelector(articlesGetter, filtersGetter, (entities, filters) => {
-    console.log('---', 1)
+    // console.log('---', 1)
     const articles = mapToArr(entities)
     const {selected} = filters
     const { from, to } = filters.dateRange
@@ -19,6 +19,6 @@ export const filteredArticlesSelector = createSelector(articlesGetter, filtersGe
 })
 
 export const articleSelectorFactory = () => createSelector(articlesGetter, idGetter, (entities, id) => {
-    console.log('---', 'article selector', id)
+    // console.log('---', 'article selector', id)
     return entities.get(id)
 })

@@ -18,6 +18,9 @@ class Article extends Component {
         isOpen: PropTypes.bool,
         toggleOpen: PropTypes.func
     }
+    state = {
+        showComments: false
+    }
 /*
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -66,7 +69,7 @@ class Article extends Component {
         return (
             <section>
                 {article.text}
-                <CommentList article={article} ref = {this.getCommentsRef} />
+                <CommentList article={article} ref = {this.getCommentsRef} toggleOpenComments={this.toggleOpenComments} isOpen={this.state.showComments} />
             </section>
         )
     }
@@ -74,6 +77,13 @@ class Article extends Component {
     handleDelete = ev => {
         ev.preventDefault()
         this.props.deleteArticle(this.props.article.id)
+    }
+
+    toggleOpenComments = e => {
+        e.preventDefault()
+        this.setState({
+            showComments: !this.state.showComments
+        })
     }
 }
 
