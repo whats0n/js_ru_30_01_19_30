@@ -12,7 +12,7 @@ class Comments extends Component {
     	const {page} = this.props.params
     	const pages = this.props.comments.pages
     	const current = !!pages && pages.get(page) && pages.get(page).size
-    	const comments = page > 1 ? page * 5 - 1 : 0;
+    	const comments = page > 1 ? page * 5 - 5 : 0;
     	if (current) return;
     	this.props.loadComments(page, comments)
     }
