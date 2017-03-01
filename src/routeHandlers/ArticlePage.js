@@ -7,6 +7,7 @@ class ArticlePage extends Component {
     };
 
     render() {
+    	console.log(this.props.params, 'PARAMS')
         return <Article isOpen={true} id={this.props.params.id} key={this.props.params.id}/>
     }
 }
